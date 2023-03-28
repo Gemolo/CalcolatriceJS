@@ -4,15 +4,21 @@ let cifra = 10
 let isInNumTwo = false
 let operazione = ""
 
-window.onload = function() {
+window.addEventListener('load', function () {
   update();
-
-}
+})
 
 function update(){
-  document.getElementById("numero1").innerHTML = numero1
-  document.getElementById("numero2").innerHTML = numero2
-  risultato(0)
+	let elements  = document.getElementsByClassName("numero1")
+	for(let i= 0; i< elements.length; i++){
+		elements[i].innerHTML = numero1
+	}
+	elements = document.getElementsByClassName("numero2")
+	for(let i= 0; i< elements.length; i++){
+		elements[i].innerHTML = numero2
+	}
+	
+	risultato(0)
 }
 
 function risultato(num){
@@ -45,16 +51,21 @@ function operazioneClicked(el){
     case '*':   	  
     case '/':      
     default:
-       if(!isInNumTwo){
-         isInNumTwo = true
-         operazione = el
-       } 
-       else {
-         alert("premi uguale")
-         return;
-       }
-      
+		
+		isInNumTwo = true
+		operazione = el
+		operazioneHTML(operazione)
+		console.log(operazione)
+		return;
   }
+}
+
+function operazioneHTML(operazioneInnerHTML){
+	let op = document.getElementsByClassName("operazione")
+	elements = document.getElementsByClassName("operazione")
+	for(let i= 0; i< elements.length; i++){
+		elements[i].innerHTML = operazioneInnerHTML
+	}
 }
 
 function clicked(el){
@@ -75,6 +86,7 @@ function reset(){
   numero1 = 0
   numero2 = 0
   update()
+  operazioneHTML("")
 }
 
 
