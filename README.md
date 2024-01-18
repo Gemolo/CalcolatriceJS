@@ -20,4 +20,4 @@ Apri il file index.html nel tuo browser web preferito.
 
 Inserisci i numeri e seleziona l'operazione che desideri eseguire.
 
-Clicca sul pulsante "Calcola" per ottenere il risultato.
+Clicca sul pulsante "=" per ottenere il risultato.
