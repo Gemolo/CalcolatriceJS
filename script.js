@@ -17,12 +17,22 @@ function update(){
 	for(let i= 0; i< elements.length; i++){
 		elements[i].innerHTML = numero2
 	}
-	
-	risultato(0)
+	displayUpdater()
+	//risultato(0)
+}
+
+function displayUpdater(){
+  let display = document.getElementById("display")
+  if(!isInNumTwo){
+    display.innerHTML = numero1
+  } else {
+    display.innerHTML = numero1 + " " + operazione + " " + numero2
+  }
 }
 
 function risultato(num){
   document.getElementById("risultato").innerHTML = num
+  document.getElementById("display").innerHTML = num
 }
 
 function calcola(){
@@ -40,6 +50,7 @@ function calcola(){
       risultato(numero1 / numero2)
       break;
     default:
+      alert("Operazione non trovata")
       
   }
 }
@@ -55,6 +66,7 @@ function operazioneClicked(el){
 		isInNumTwo = true
 		operazione = el
 		operazioneHTML(operazione)
+	  displayUpdater()
 		console.log(operazione)
 		return;
   }
@@ -71,7 +83,6 @@ function operazioneHTML(operazioneInnerHTML){
 function clicked(el){
   console.log(el)
   
-  
   if(!isInNumTwo){
     numero1 = numero1 * cifra + el
   } else {
@@ -85,6 +96,7 @@ function reset(){
   isInNumTwo = false
   numero1 = 0
   numero2 = 0
+  risultato(0)
   update()
   operazioneHTML("")
 }
